@@ -8,8 +8,8 @@
             "key": "separator",
             "hint": "For example, to access the value of 'b' in a: { b: 1 } with separator '__', you can do 'a__b'",
             "name": "Select a separator format for accessing your nested properties",
-            "type": "selection",
-            "options": [
+            "type": "choice",
+            "choices": [
                 "__",
                 ".",
                 ">",
