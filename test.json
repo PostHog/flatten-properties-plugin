@@ -1,0 +1,158 @@
+[
+    {
+        "name": "Currency Normalization",
+        "url": "https://github.com/PostHog/currency-normalization-plugin",
+        "description": "Normalise monetary values into a base currency",
+        "verified": true,
+        "maintainer": "official",
+        "displayOnWebsiteLib": true,
+        "type": "data_in"
+    },
+    {
+        "name": "MaxMind GeoIP",
+        "url": "https://www.npmjs.com/package/@posthog/maxmind-plugin",
+        "description": "Enrich your collected events with GeoIP data from MaxMind",
+        "verified": true,
+        "maintainer": "official",
+        "displayOnWebsiteLib": true,
+        "type": "data_in",
+        "imageLink": "https://raw.githubusercontent.com/PostHog/posthog-maxmind-plugin/main/logo.png"
+    },
+    {
+        "name": "Hello World",
+        "url": "https://github.com/PostHog/helloworldplugin",
+        "description": "Greet the World and Foo a Bar",
+        "verified": true,
+        "maintainer": "community",
+        "displayOnWebsiteLib": false,
+        "type": "data_in"
+    },
+    {
+        "name": "GitHub Release Tracker",
+        "url": "https://github.com/PostHog/github-release-tracking-plugin",
+        "description": "Integrate PostHog with GitHub and get automatic release annotations.",
+        "verified": true,
+        "maintainer": "official",
+        "displayOnWebsiteLib": true,
+        "type": "data_in"
+    },
+    {
+        "name": "GitLab Release Tracker",
+        "url": "https://github.com/PostHog/gitlab-release-tracking-plugin",
+        "description": "Integrate PostHog with GitLab and get automatic release annotations.",
+        "verified": true,
+        "maintainer": "official",
+        "displayOnWebsiteLib": true,
+        "type": "data_in"
+    },
+    {
+        "name": "Bitbucket Release Tracker",
+        "url": "https://github.com/PostHog/bitbucket-release-tracker",
+        "description": "Integrate PostHog with Bitbucket and get automatic release annotations.",
+        "verified": true,
+        "maintainer": "official",
+        "displayOnWebsiteLib": true,
+        "type": "data_in"
+    },
+    {
+        "name": "Twitter Followers",
+        "url": "https://github.com/PostHog/twitter-followers-plugin",
+        "description": "Get your Twitter follower numbers daily without signing up to the Twitter API.",
+        "verified": true,
+        "maintainer": "official",
+        "displayOnWebsiteLib": true,
+        "type": "data_in"
+    },
+    {
+        "name": "Hubspot",
+        "url": "https://github.com/PostHog/hubspot-plugin",
+        "description": "Send emails and user data to Hubspot when you identify users using PostHog.",
+        "verified": true,
+        "maintainer": "official",
+        "displayOnWebsiteLib": true,
+        "type": "data_out"
+    },
+    {
+        "name": "Schema Enforcer",
+        "url": "https://www.npmjs.com/package/@posthog/schema-enforcer-plugin",
+        "description": "Prevent ingestion of events that don't match your specified schemas.",
+        "verified": true,
+        "maintainer": "official",
+        "displayOnWebsiteLib": true,
+        "type": "ingestion_filtering",
+        "imageLink": "https://raw.githubusercontent.com/PostHog/posthog-schema-enforcer-plugin/main/logo.png"
+    },
+    {
+        "name": "Customer.io",
+        "url": "https://github.com/PostHog/customerio-plugin",
+        "description": "Send event data and available emails to Customer.io.",
+        "verified": true,
+        "maintainer": "official",
+        "displayOnWebsiteLib": true,
+        "type": "data_out"
+    },
+    {
+        "name": "Sendgrid",
+        "url": "https://github.com/PostHog/sendgrid-plugin",
+        "description": "Send emails and user data to Sendgrid when you identify users using PostHog.",
+        "verified": true,
+        "maintainer": "official",
+        "displayOnWebsiteLib": true,
+        "type": "data_out"
+    },
+    {
+        "name": "Email Scoring",
+        "url": "https://github.com/PostHog/mailboxlayer-plugin",
+        "description": "Add email scores to PostHog user profiles using the the Mailboxlayer API.",
+        "verified": true,
+        "maintainer": "official",
+        "displayOnWebsiteLib": true,
+        "type": "data_in"
+    },
+    {
+        "name": "BigQuery Export",
+        "url": "https://github.com/PostHog/bigquery-plugin",
+        "description": "Sends events to a Google BigQuery database on ingestion.",
+        "verified": true,
+        "maintainer": "official",
+        "displayOnWebsiteLib": true,
+        "type": "data_out"
+    },
+    {
+        "name": "Useragent Enhancer",
+        "url": "https://www.npmjs.com/package/useragent-plugin",
+        "description": "Enhances events with browser details when the event has a \"$useragent\" property.",
+        "verified": true,
+        "maintainer": "community",
+        "displayOnWebsiteLib": true,
+        "type": "data_in",
+        "imageLink": "https://raw.githubusercontent.com/weyert/useragentplugin/main/logo.png"
+    },
+    {
+        "name": "Timestamp Parser",
+        "url": "https://github.com/PostHog/timestamp-parser-plugin",
+        "description": "Parse your event timestamps into useful date properties.",
+        "verified": true,
+        "maintainer": "official",
+        "displayOnWebsiteLib": true,
+        "type": "ingestion_filtering"
+    },
+    {
+        "name": "GitHub Star Sync",
+        "url": "https://github.com/PostHog/github-star-sync-plugin",
+        "description": "Sync GitHub stars for a repository (one event per star)",
+        "verified": true,
+        "maintainer": "official",
+        "displayOnWebsiteLib": true,
+        "type": "data_in"
+    },
+    {
+        "name": "Taxonomy Standardizer",
+        "url": "https://github.com/PostHog/taxonomy-plugin",
+        "description": "Standardize your event names into a single pattern.",
+        "verified": true,
+        "maintainer": "official",
+        "displayOnWebsiteLib": true,
+        "type": "ingestion_filtering"
+    }
+]
