@@ -1,6 +1,6 @@
 {
     "name": "property-flattener-plugin",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "Flatten event properties to easily access them in filters.",
     "main": "index.js",
     "repository": {
