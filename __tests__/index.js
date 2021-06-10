@@ -1,6 +1,4 @@
-const {
-    createEvent
-} = require('@posthog/plugin-scaffold/test/utils.js')
+const { createEvent } = require('@posthog/plugin-scaffold/test/utils.js')
 const { processEventBatch } = require('../index')
 
 const nestedEventProperties = {
@@ -26,13 +24,9 @@ const nestedEventProperties = {
     y: 'not nested either'
 }
 
-
 test('flattens all nested properties', async () => {
+    const events = [createEvent({ event: 'test', properties: nestedEventProperties })]
 
-    const events = [
-        createEvent({ event: 'test', properties: nestedEventProperties })
-    ]
-    
     const eventsOutput = await processEventBatch([...events], { config: { separator: '__' } })
 
     const expectedProperties = {
@@ -45,10 +39,33 @@ test('flattens all nested properties', async () => {
         a__b__c__z: 'nested under c',
         a__b__z: 'nested under b',
         a__z: 'nested under a',
-        w__array__0__z: 'nested in w array',
-      }
-    
-    expect(eventsOutput[0]).toEqual( createEvent({ event: 'test', properties: expectedProperties }))
+        w__array__0__z: 'nested in w array'
+    }
 
+    expect(eventsOutput[0]).toEqual(createEvent({ event: 'test', properties: expectedProperties }))
 })
 
+test('test autocapture', async () => {
+    const events = [
+        createEvent({
+            event: '$autocapture',
+            properties: {
+                $elements: [
+                    { tag_name: 'span', nth_child: 1 },
+                    { tag_name: 'div', nth_child: 1 }
+                ]
+            }
+        })
+    ]
+
+    const eventsOutput = await processEventBatch([...events], { config: { separator: '__' } })
+
+    const expectedProperties = {
+        $elements: [
+            { tag_name: 'span', nth_child: 1 },
+            { tag_name: 'div', nth_child: 1 }
+        ]
+    }
+
+    expect(eventsOutput[0]).toEqual(createEvent({ event: '$autocapture', properties: expectedProperties }))
+})
