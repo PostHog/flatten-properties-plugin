@@ -1,10 +1,8 @@
-async function processEventBatch(events, { config }) {
-    for (let event of events) {
-        if (event.properties) {
-            event.properties = flattenProperties(event.properties, config.separator)
-        }
+async function processEvent(event, { config }) {
+    if (event.event !== '$autocapture' && event.properties) {
+        event.properties = flattenProperties(event.properties, config.separator)
     }
-    return events
+    return event
 }
 
 const flattenProperties = (props, sep, nestedChain = []) => {
