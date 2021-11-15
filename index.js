@@ -32,5 +32,5 @@ const flattenProperties = (props, sep, nestedChain = []) => {
 }
 
 module.exports = {
-    processEventBatch
+    processEvent
 }
