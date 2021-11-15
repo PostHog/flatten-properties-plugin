@@ -1,6 +1,10 @@
 async function processEvent(event, { config }) {
-    if (event.event !== '$autocapture' && event.properties) {
-        event.properties = flattenProperties(event.properties, config.separator)
+    try {
+        if (event.event !== '$autocapture' && event.properties) {
+            event.properties = flattenProperties(event.properties, config.separator)
+        }
+    } catch(e) {
+        throw e
     }
     return event
 }
