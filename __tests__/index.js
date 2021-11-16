@@ -1,5 +1,5 @@
 const { createEvent } = require('@posthog/plugin-scaffold/test/utils.js')
-const { processEventBatch } = require('../index')
+const { processEvent } = require('../index')
 
 const nestedEventProperties = {
     a: {
@@ -25,9 +25,9 @@ const nestedEventProperties = {
 }
 
 test('flattens all nested properties', async () => {
-    const events = [createEvent({ event: 'test', properties: nestedEventProperties })]
+    const event = createEvent({ event: 'test', properties: nestedEventProperties })
 
-    const eventsOutput = await processEventBatch([...events], { config: { separator: '__' } })
+    const eventsOutput = await processEvent(event, { config: { separator: '__' } })
 
     const expectedProperties = {
         a: nestedEventProperties.a,
@@ -42,23 +42,21 @@ test('flattens all nested properties', async () => {
         w__array__0__z: 'nested in w array'
     }
 
-    expect(eventsOutput[0]).toEqual(createEvent({ event: 'test', properties: expectedProperties }))
+    expect(eventsOutput).toEqual(createEvent({ event: 'test', properties: expectedProperties }))
 })
 
 test('test autocapture', async () => {
-    const events = [
-        createEvent({
-            event: '$autocapture',
-            properties: {
-                $elements: [
-                    { tag_name: 'span', nth_child: 1 },
-                    { tag_name: 'div', nth_child: 1 }
-                ]
-            }
-        })
-    ]
+    const event = createEvent({
+        event: '$autocapture',
+        properties: {
+            $elements: [
+                { tag_name: 'span', nth_child: 1 },
+                { tag_name: 'div', nth_child: 1 }
+            ]
+        }
+    })
 
-    const eventsOutput = await processEventBatch([...events], { config: { separator: '__' } })
+    const eventsOutput = await processEvent(event, { config: { separator: '__' } })
 
     const expectedProperties = {
         $elements: [
@@ -67,7 +65,7 @@ test('test autocapture', async () => {
         ]
     }
 
-    expect(eventsOutput[0]).toEqual(createEvent({ event: '$autocapture', properties: expectedProperties }))
+    expect(eventsOutput).toEqual(createEvent({ event: '$autocapture', properties: expectedProperties }))
 })
 
 test('test set and set once', async () => {
