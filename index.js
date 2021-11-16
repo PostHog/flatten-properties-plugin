@@ -17,7 +17,7 @@ const flattenProperties = (props, sep, nestedChain = []) => {
         } else if (key === '$set') {
             newProps = {...newProps, $set: {...props[key], ...flattenProperties(props[key], sep)}}
         } else if (key === '$set_once) {
-            newProps = {...newProps, $set_once: {...props[key], flattenProperties(props[key], sep)}}
+            newProps = {...newProps, $set_once: {...props[key], ...flattenProperties(props[key], sep)}}
         } else if (Array.isArray(value)) {
             let objectFromArray = {}
             for (let i = 0; i < value.length; ++i) {
