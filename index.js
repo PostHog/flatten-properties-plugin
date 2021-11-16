@@ -3,7 +3,7 @@ async function processEvent(event, { config }) {
         if (event.event !== '$autocapture' && event.properties) {
             event.properties = flattenProperties(event.properties, config.separator)
         }
-    } catch(e) {
+    } catch (e) {
         throw e
     }
     return event
@@ -15,9 +15,9 @@ const flattenProperties = (props, sep, nestedChain = []) => {
         if (key === '$elements') {
             // Don't expand $elements on $autocapture events as those will be removed anyway
         } else if (key === '$set') {
-            newProps = {...newProps, $set: {...props[key], ...flattenProperties(props[key], sep)}}
-        } else if (key === '$set_once) {
-            newProps = {...newProps, $set_once: {...props[key], ...flattenProperties(props[key], sep)}}
+            newProps = { ...newProps, $set: { ...props[key], ...flattenProperties(props[key], sep) } }
+        } else if (key === '$set_once') {
+            newProps = { ...newProps, $set_once: { ...props[key], ...flattenProperties(props[key], sep) } }
         } else if (Array.isArray(value)) {
             let objectFromArray = {}
             for (let i = 0; i < value.length; ++i) {

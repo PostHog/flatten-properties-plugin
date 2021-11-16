@@ -69,3 +69,47 @@ test('test autocapture', async () => {
 
     expect(eventsOutput[0]).toEqual(createEvent({ event: '$autocapture', properties: expectedProperties }))
 })
+
+test('test set and set once', async () => {
+    const events = [
+        createEvent({
+            event: '$identify',
+            properties: {
+                $set: {
+                    example: {
+                        company_size: 20,
+                        category: ['a', 'b']
+                    }
+                },
+                $set_once: {
+                    example: {
+                        company_size: 20,
+                        category: ['a', 'b']
+                    }
+                }
+            }
+        })
+    ]
+
+    const eventsOutput = await processEventBatch([...events], { config: { separator: '__' } })
+
+    const expectedProperties = {
+        $set: {
+            example: {
+                company_size: 20,
+                category: ['a', 'b']
+            }
+        },
+        $set_once: {
+            example: {
+                company_size: 20,
+                category: ['a', 'b']
+            },
+            example__company_size: 20,
+            example__category__0: 'a',
+            example__category__1: 'b'
+        }
+    }
+
+    expect(eventsOutput[0]).toEqual(createEvent({ event: '$autocapture', properties: expectedProperties }))
+})
