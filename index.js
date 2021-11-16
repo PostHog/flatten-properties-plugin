@@ -19,11 +19,6 @@ const flattenProperties = (props, sep, nestedChain = []) => {
         } else if (key === '$set_once') {
             newProps = { ...newProps, $set_once: { ...props[key], ...flattenProperties(props[key], sep) } }
         } else if (Array.isArray(value)) {
-            let objectFromArray = {}
-            for (let i = 0; i < value.length; ++i) {
-                objectFromArray[i] = value[i]
-            }
-            props[key] = { ...objectFromArray }
             newProps = { ...newProps, ...flattenProperties(props[key], sep, [...nestedChain, key]) }
         } else if (value !== null && typeof value === 'object' && Object.keys(value).length > 0) {
             newProps = { ...newProps, ...flattenProperties(props[key], sep, [...nestedChain, key]) }
