@@ -112,3 +112,62 @@ test('test set and set once', async () => {
 
     expect(eventsOutput.properties).toEqual(expectedProperties)
 })
+
+test('test $group_set', async () => {
+    const event = createEvent({
+        event: '$groupidentify',
+        properties: {
+            $group_set: {
+                a: 'shopify.com',
+                ads: {
+                    'facebook-ads': true,
+                    'google-ads': true,
+                    'tiktok-ads': false,
+                    'pinterest-ads': false,
+                    'snapchat-ads': false,
+                    fairing: false,
+                    slack: false
+                },
+                pixel: true,
+                pixel_settings: {
+                    allow_auto_install: true
+                },
+                currency: 'USD',
+                timezone: 'XXX'
+            }
+        }
+    })
+
+    const eventsOutput = await processEvent(event, { config: { separator: '__' } })
+
+    const expectedProperties = {
+        $group_set: {
+            a: 'shopify.com',
+            ads: {
+                'facebook-ads': true,
+                'google-ads': true,
+                'tiktok-ads': false,
+                'pinterest-ads': false,
+                'snapchat-ads': false,
+                fairing: false,
+                slack: false
+            },
+            pixel: true,
+            pixel_settings: {
+                allow_auto_install: true
+            },
+            currency: 'USD',
+            timezone: 'XXX',
+            'ads__facebook-ads': true,
+            ads__fairing: false,
+            'ads__google-ads': true,
+            'ads__pinterest-ads': false,
+            ads__slack: false,
+            'ads__snapchat-ads': false,
+            'ads__tiktok-ads': false,
+            pixel_settings__allow_auto_install: true
+        }
+    }
+
+    expect(eventsOutput.properties).toEqual(expectedProperties)
+})
