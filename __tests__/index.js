@@ -52,7 +52,8 @@ test('test autocapture', async () => {
             $elements: [
                 { tag_name: 'span', nth_child: 1 },
                 { tag_name: 'div', nth_child: 1 }
-            ]
+            ],
+            $elements_chain: 'span:nth_child="1";div:nth_child="1"'
         }
     })
 
@@ -62,7 +63,8 @@ test('test autocapture', async () => {
         $elements: [
             { tag_name: 'span', nth_child: 1 },
             { tag_name: 'div', nth_child: 1 }
-        ]
+        ],
+        $elements_chain: 'span:nth_child="1";div:nth_child="1"'
     }
 
     expect(eventsOutput).toEqual(createEvent({ event: '$autocapture', properties: expectedProperties }))
