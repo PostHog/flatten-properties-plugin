@@ -12,7 +12,7 @@ async function processEvent(event, { config }) {
 const flattenProperties = (props, sep, nestedChain = []) => {
     let newProps = {}
     for (const [key, value] of Object.entries(props)) {
-        if (key === '$elements' || key === '$groups' || key === '$active_feature_flags') {
+        if (key === '$elements' || key === '$elements_chain' || key === '$groups' || key === '$active_feature_flags') {
             // Hide 'internal' properties used in event processing
         } else if (key === '$set') {
             newProps = { ...newProps, $set: { ...props[key], ...flattenProperties(props[key], sep) } }
