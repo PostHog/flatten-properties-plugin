@@ -9,10 +9,12 @@ async function processEvent(event, { config }) {
     return event
 }
 
+const propertyDenyList = ['$elements', '$elements_chain', '$groups', '$active_feature_flags', '$heatmap_data']
+
 const flattenProperties = (props, sep, nestedChain = []) => {
     let newProps = {}
     for (const [key, value] of Object.entries(props)) {
-        if (key === '$elements' || key === '$elements_chain' || key === '$groups' || key === '$active_feature_flags') {
+        if (propertyDenyList.includes(key)) {
             // Hide 'internal' properties used in event processing
         } else if (key === '$set') {
             newProps = { ...newProps, $set: { ...props[key], ...flattenProperties(props[key], sep) } }
