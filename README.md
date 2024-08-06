@@ -1,5 +1,8 @@
 # Property Flattener Plugin
 
+> [!WARNING]  
+> This plugin has been deprecated. [We are currently working on a native solution.](https://github.com/PostHog/posthog/issues/23979).
+
 Flatten nested properties in PostHog events to easily access them in filters.
 
 ## Example
