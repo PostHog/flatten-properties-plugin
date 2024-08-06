@@ -1,7 +1,7 @@
 # Property Flattener Plugin
 
 > [!WARNING]  
-> This plugin has been deprecated. [We are currently working on a native solution.](https://github.com/PostHog/posthog/issues/23979).
+> This plugin has been deprecated. You can use [HogQL](https://posthog.com/docs/hogql) to access nested properties in PostHog.
 
 Flatten nested properties in PostHog events to easily access them in filters.
 
