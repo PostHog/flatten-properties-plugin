@@ -84,14 +84,12 @@ describe('the property flattener', () => {
         const eventsOutput = await processEvent(event, { config: { separator: '__' } })
 
         const expectedProperties = {
-            $elements: [
-                { tag_name: 'span', nth_child: 1 },
-                { tag_name: 'div', nth_child: 1 }
-            ],
-            $elements_chain: 'span:nth_child="1";div:nth_child="1"'
+            any: [
+                { nested: 'property' }
+            ]
         }
 
-        expect(eventsOutput).toEqual(createEvent({ event: '$autocapture', properties: expectedProperties }))
+        expect(eventsOutput).toEqual(createEvent({ event: 'organization usage report', properties: expectedProperties }))
     })
 
     test('set and set once', async () => {
