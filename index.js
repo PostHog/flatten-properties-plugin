@@ -1,3 +1,9 @@
+/**
+ * Some events will always create very large numbers of flattened properties
+ * This is undesirable since a large enough number of properties for a particular team can slow down the property filter in the UI
+ * If the problem property has a unique enough name it can be added to the propertyDenyList
+ * If not (or if many properties for a given event are problematic) then the event can be added here
+ */
 const eventDenyList = ['$autocapture', 'organization usage report']
 
 async function processEvent(event, { config }) {
