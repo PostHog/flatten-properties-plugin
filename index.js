@@ -1,6 +1,8 @@
+const eventDenyList = ['$autocapture', 'organization usage report']
+
 async function processEvent(event, { config }) {
     try {
-        if (event.event !== '$autocapture' && event.properties) {
+        if (!eventDenyList.includes(event.event) && event.properties) {
             event.properties = flattenProperties(event.properties, config.separator)
         }
     } catch (e) {
