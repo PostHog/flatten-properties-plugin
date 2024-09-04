@@ -71,7 +71,7 @@ describe('the property flattener', () => {
         expect(eventsOutput).toEqual(createEvent({ event: '$autocapture', properties: expectedProperties }))
     })
 
-    test('organization usage report is ignored', async () => {
+    test('organization usage report is ignored because it causes very many flattened properties', async () => {
         const event = createEvent({
             event: 'organization usage report',
             properties: {
